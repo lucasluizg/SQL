@@ -81,3 +81,31 @@ UPDATE Senha
 UPDATE Senha 
 	SET inicioAtendimento = '07:27:37'
 	WHERE Numero = '95756';
+
+-- Exercicio 7
+UPDATE Senha
+	SET FimAtendimento = '19:22:46'
+	WHERE Numero = '28374';
+
+UPDATE Senha 
+	SET FimAtendimento = '15:41:24'
+	WHERE Numero = '27465';
+	
+UPDATE Senha
+	SET FimAtendimento = '09:03:29'
+	WHERE Numero = '95756';
+
+-- Exercicio 8
+SELECT Numero, inicioAtendimento FROM Senha WHERE fimAtendimento IS NULL
+	ORDER BY Numero;
+
+-- Exercicio 9
+SELECT MIN(Numero) FROM Senha WHERE fimAtendimento IS NULL;
+
+-- Exercicio 10
+SELECT idAssunto, COUNT(Numero) FROM Senha WHERE idAssunto IN ('1', '2', '4') AND fimAtendimento IS NULL
+	GROUP BY idAssunto;
+
+-- Exercicio 11
+SELECT AVG(TIMESTAMPDIFF(MINUTE, inicioAtendimento, fimAtendimento)) FROM Senha WHERE inicioAtendimento IS NOT NULL AND fimAtendimento IS NOT NULL;
+
