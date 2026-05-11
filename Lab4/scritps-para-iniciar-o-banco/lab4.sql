@@ -44,13 +44,16 @@ SELECT quantidade FROM Bolo
 ALTER TABLE Bolo ADD Column categoria VARCHAR(80);
 
 -- Exercicio 8
-SELECT nome,
-	CASE
-		WHEN nome = 'Bolo de cenoura' OR nome = 'Bolo de laranja' THEN 'Bolos Suaves'
-		WHEN nome = 'Bolo de chocolate' OR nome = 'Torta alemã' THEN 'Bolos doces'
-		WHEN nome = 'Bolo Marta Rocha' THEN 'Bolos Especiais'	
-	END AS categoria
-FROM Bolo;
+UPDATE Bolo
+SET categoria =
+CASE
+	WHEN nome = 'Bolo de cenoura' OR nome = 'Bolo de laranja'
+        THEN 'Bolos suaves'
+    WHEN nome = 'Bolo de chocolate' OR nome = 'Torta alemã'
+        THEN 'Bolos doces'
+    WHEN nome = 'Bolo Marta Rocha'
+        THEN 'Bolos especiais'
+END;
 
 -- Exercicio 9
 SELECT nome,
@@ -121,4 +124,11 @@ COMMIT;
 SELECT Bolo.nome, SUM(Venda.quantidadeVendida) AS quantidadeVendida FROM Bolo
 	INNER JOIN Venda ON Venda.idBolo = Bolo.id
 	GROUP BY Bolo.nome;
+
+-- Exercicio 17
+SELECT Bolo.nome, Bolo.categoria, Bolo.quantidade FROM Bolo;
+
+-- Exercicio 18
+SELECT Bolo.id FROM Bolo
+	WHERE id NOT IN(SELECT idBolo FROM Venda);
 
