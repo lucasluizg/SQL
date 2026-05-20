@@ -60,7 +60,7 @@ SELECT DISTINCT Nome FROM Funcionario
 WHERE idDepartamento = 1 || 2;
 
 -- Exercicio 7
-SELECT DISTINCT Nome, Sobrenome FROM Funcionario
+SELECT Nome, Sobrenome FROM Funcionario
 WHERE Sobrenome LIKE '%eira'
 ORDER by Nome, Sobrenome;
 
